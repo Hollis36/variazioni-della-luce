@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>晨光变奏曲</title>
+<meta name="description" content="《晨光变奏曲》Variazioni della Luce —— 为钢琴与乐队而作。Für eine schöne Welt。">
+<meta property="og:title" content="晨光变奏曲">
+<meta property="og:description" content="Variazioni della Luce">
+<meta property="og:image" content="media/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+SC:wght@400;600;700&display=swap">
+<style>
+/* 一页纸的音乐会节目单：珠光白纸面，宋体标题，意大利斜体做注释，香槟金只用在细线上 */
+:root {
+  --pearl-hi: #fcfbf8; --pearl: #f6f4f0; --pearl-lo: #eeebe6;
+  --ink: #222024; --stone: #8f8a83; --hair: #e2ddd5; --gold: #b0925f; --gold-soft: #e8cd96;
+  --serif-cn: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --serif-it: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pearl-hi: #1e1d20; --pearl: #19181b; --pearl-lo: #141316;
+    --ink: #eeeae4; --stone: #a19b93; --hair: #2e2c30; --gold: #d2b47e; --gold-soft: #6b5733;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--pearl); }
+body {
+  margin: 0; color: var(--ink); font-family: var(--serif-cn); line-height: 1.75;
+  background:
+    radial-gradient(ellipse 80% 60% at 48% 30%, var(--pearl-hi), transparent 70%),
+    linear-gradient(135deg, rgba(232, 200, 196, .14), transparent 45%, rgba(190, 205, 228, .14)),
+    var(--pearl);
+  background-attachment: fixed;
+  padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right));
+}
+main { max-width: 1120px; margin: 0 auto; }
+.it { font-family: var(--serif-it); font-style: italic; }
+
+header { text-align: center; padding: clamp(72px, 14vh, 140px) 0 clamp(48px, 8vh, 80px); }
+.ded { font-family: var(--serif-it); font-style: italic; font-size: 22px; color: var(--stone); letter-spacing: .04em; }
+h1 { font-weight: 700; font-size: clamp(48px, 9vw, 104px); letter-spacing: .08em; margin: 10px 0 0; line-height: 1.2; }
+.sub { font-family: var(--serif-it); font-style: italic; font-size: clamp(22px, 3.2vw, 34px); color: var(--stone); margin-top: 6px; }
+.rule { width: 72px; height: 2px; background: var(--gold); margin: 34px auto 22px; border: 0; }
+.inst { font-family: var(--serif-it); font-style: italic; color: var(--stone); font-size: 19px; letter-spacing: .03em; }
+
+section { margin: 0 0 clamp(64px, 10vh, 112px); }
+h2 { font-weight: 600; font-size: 15px; letter-spacing: .32em; color: var(--stone); text-align: center; margin: 0 0 28px; }
+h2 .it { letter-spacing: .06em; font-size: 19px; margin-left: .6em; }
+
+.film { border-radius: 4px; overflow: hidden; box-shadow: 0 30px 80px -40px rgba(60, 50, 40, .35), 0 0 0 1px var(--hair); background: var(--pearl-hi); }
+.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--pearl-hi); }
+.note { text-align: center; color: var(--stone); font-size: 14px; margin-top: 14px; }
+.q { font: inherit; color: var(--gold); background: none; border: 0; border-bottom: 1px solid var(--gold-soft); padding: 0 0 1px; cursor: pointer; }
+.q:hover, .q:focus-visible { color: var(--ink); outline: none; }
+
+.listen { max-width: 720px; margin: 0 auto; text-align: center; }
+.listen audio { width: 100%; margin-top: 4px; }
+
+.movements { max-width: 720px; margin: 0 auto; border-top: 1px solid var(--hair); }
+.mv { display: grid; grid-template-columns: 3.2em 1fr auto; align-items: baseline; gap: 18px; padding: 16px 4px;
+  border-bottom: 1px solid var(--hair); cursor: pointer; background: none; border-left: 0; border-right: 0; border-top: 0;
+  width: 100%; font: inherit; color: inherit; text-align: left; }
+.mv:hover, .mv:focus-visible { background: rgba(176, 146, 95, .07); outline: none; }
+.mv .l { font-family: var(--serif-it); font-size: 22px; color: var(--gold); text-align: center; }
+.mv .n { font-family: var(--serif-it); font-style: italic; font-size: 24px; }
+.mv .n small { font-family: var(--serif-cn); font-style: normal; font-size: 15px; color: var(--stone); margin-left: 12px; }
+.mv time { font-family: var(--serif-it); font-variant-numeric: tabular-nums; color: var(--stone); font-size: 19px; }
+.facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 34px; color: var(--stone); font-size: 15px; margin-top: 26px; }
+.facts b { color: var(--ink); font-weight: 600; margin-left: .4em; }
+
+.pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto; }
+.pages a { display: block; background: #fff; box-shadow: 0 14px 40px -24px rgba(60, 50, 40, .45), 0 0 0 1px var(--hair); transition: transform .25s ease; }
+.pages a:hover, .pages a:focus-visible { transform: translateY(-4px); }
+.pages img { display: block; width: 100%; height: auto; }
+@media (max-width: 760px) { .pages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.files { max-width: 720px; margin: 0 auto; border-top: 1px solid var(--hair); }
+.file { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 16px 4px; border-bottom: 1px solid var(--hair);
+  color: inherit; text-decoration: none; }
+.file:hover, .file:focus-visible { background: rgba(176, 146, 95, .07); outline: none; }
+.file .t { font-size: 17px; }
+.file .d { grid-column: 1; color: var(--stone); font-size: 14px; }
+.file .s { grid-row: 1 / 3; grid-column: 2; align-self: center; font-family: var(--serif-it); font-style: italic; color: var(--gold); font-size: 18px; }
+
+footer { text-align: center; padding: 20px 0 80px; color: var(--stone); }
+footer .ded { font-size: 20px; }
+@media (prefers-reduced-motion: reduce) { .pages a { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="ded">Für eine schöne Welt</div>
+    <h1>晨光变奏曲</h1>
+    <div class="sub">Variazioni della Luce</div>
+    <hr class="rule">
+    <div class="inst">Pianoforte · Archi · Corno · Organo · Campane</div>
+  </header>
+
+  <section aria-label="演奏">
+    <h2>演奏<span class="it">Esecuzione</span></h2>
+    <div class="film">
+      <video id="film" controls playsinline preload="metadata" poster="media/cover.jpg" src="media/Variazioni-della-Luce_1080p-light.mp4"></video>
+    </div>
+    <p class="note"><span id="quality">1080p</span> · <span id="film-cache">正在缓存…</span> · 总谱随音乐翻行 · <button class="q" id="toggle4k" type="button">切换到 4K 原画</button></p>
+  </section>
+
+  <section aria-label="乐章">
+    <h2>结构<span class="it">Forma</span></h2>
+    <div class="movements" id="movements">
+      <button class="mv" data-t="0"><span class="l">A</span><span class="n">Tema<small>主题</small></span><time>0:00</time></button>
+      <button class="mv" data-t="18"><span class="l">B</span><span class="n">Variazione I<small>第一变奏</small></span><time>0:18</time></button>
+      <button class="mv" data-t="35"><span class="l">C</span><span class="n">Variazione II<small>第二变奏</small></span><time>0:35</time></button>
+      <button class="mv" data-t="51"><span class="l">D</span><span class="n">Variazione III<small>第三变奏</small></span><time>0:51</time></button>
+      <button class="mv" data-t="67"><span class="l">·</span><span class="n">Finale<small>终曲</small></span><time>1:07</time></button>
+    </div>
+    <div class="facts">
+      <span>调性<b>D 大调</b></span><span>拍号<b>4/4</b></span><span>速度<b class="it">Allegro gioioso</b></span><span>时长<b>1′14″</b></span>
+    </div>
+  </section>
+
+  <section aria-label="聆听">
+    <h2>聆听<span class="it">Ascolto</span></h2>
+    <div class="listen">
+      <audio id="listen" controls preload="none" src="media/Variazioni-della-Luce_320k.mp3"></audio>
+      <p class="note">MP3 320 kbps · 无损 WAV 见下载 · <span id="audio-cache">正在缓存…</span></p>
+    </div>
+  </section>
+
+  <section aria-label="总谱">
+    <h2>总谱<span class="it">Partitura</span></h2>
+    <div class="pages">
+      <a href="score/Variazioni-della-Luce_score.pdf" aria-label="总谱第 1 页"><img src="score/pages/page-1.png" alt="总谱第 1 页" loading="lazy"></a>
+      <a href="score/Variazioni-della-Luce_score.pdf" aria-label="总谱第 2 页"><img src="score/pages/page-2.png" alt="总谱第 2 页" loading="lazy"></a>
+      <a href="score/Variazioni-della-Luce_score.pdf" aria-label="总谱第 3 页"><img src="score/pages/page-3.png" alt="总谱第 3 页" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section aria-label="下载">
+    <h2>下载<span class="it">Scarica</span></h2>
+    <div class="files">
+      <a class="file" href="score/Variazioni-della-Luce_score.pdf" download><span class="t">总谱 PDF</span><span class="d">A4 · 3 页 · 出版版式</span><span class="s">PDF</span></a>
+      <a class="file" href="media/Variazioni-della-Luce_24bit-48kHz.wav" download><span class="t">无损母带</span><span class="d">24-bit / 48 kHz · 立体声</span><span class="s">WAV</span></a>
+      <a class="file" href="media/Variazioni-della-Luce_320k.mp3" download><span class="t">MP3</span><span class="d">320 kbps · 内嵌封面</span><span class="s">MP3</span></a>
+      <a class="file" href="media/Variazioni-della-Luce_4K-master.mp4" download><span class="t">4K 演奏</span><span class="d">3840 × 2160 · H.264 High · AAC 320k</span><span class="s">MP4</span></a>
+      <a class="file" href="score/Variazioni-della-Luce.mscz" download><span class="t">MuseScore 工程</span><span class="d">可在 MuseScore Studio 中打开、播放与修改</span><span class="s">MSCZ</span></a>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <div class="ded">Für eine schöne Welt</div>
+</footer>
+<script>
+  // 播放策略（为国内网络设计）：
+  // 1. 线路：同时试 GitHub Pages 和几个 jsDelivr 镜像，各下前 128 KB，谁先完成用谁。
+  // 2. 缓存：选好线路后在后台把视频（约 3.7 MB）和 MP3（约 2.5 MB）完整下载到内存，下完换成内存副本。
+  // 3. 让路：缓存没完成时一旦点了播放，立刻停止后台缓存，把带宽全部留给正在播放的内容。
+  const film = document.getElementById("film");
+  const audio = document.getElementById("listen");
+  const filmLabel = document.getElementById("film-cache");
+  const audioLabel = document.getElementById("audio-cache");
+  const qualityLabel = document.getElementById("quality");
+  const toggle = document.getElementById("toggle4k");
+
+  const PIN = "Hollis36/variazioni-della-luce@8fd319966b37b02c3bf6666297c2a13c21efe2d7";
+  const FILES = Object.freeze({
+    video: "media/Variazioni-della-Luce_1080p-light.mp4",
+    audio: "media/Variazioni-della-Luce_320k.mp3",
+    master: "media/Variazioni-della-Luce_4K-master.mp4",
+  });
+  const MIRRORS = Object.freeze([
+    "",
+    `https://testingcf.jsdelivr.net/gh/${PIN}/`,
+    `https://fastly.jsdelivr.net/gh/${PIN}/`,
+    `https://cdn.jsdelivr.net/gh/${PIN}/`,
+    `https://gcore.jsdelivr.net/gh/${PIN}/`,
+  ]);
+  const PROBE_BYTES = 128 * 1024;
+  const PROBE_TIMEOUT_MS = 6000;
+
+  const state = { base: "", master: false, cached: { video: null, audio: null }, jobs: { video: null, audio: null } };
+
+  // 下载 url 的前 PROBE_BYTES 字节后中止，返回 base；失败则 reject
+  async function probe(base, signal) {
+    const res = await fetch(base + FILES.video, { signal, cache: "no-store" });
+    if (!res.ok || !res.body) throw new Error("probe " + res.status);
+    const reader = res.body.getReader();
+    let got = 0;
+    while (got < PROBE_BYTES) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      got += value.length;
+    }
+    reader.cancel().catch(() => {});
+    return base;
+  }
+
+  async function pickMirror() {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), PROBE_TIMEOUT_MS);
+    try {
+      return await Promise.any(MIRRORS.map((m) => probe(m, ctrl.signal)));
+    } catch (e) {
+      return "";
+    } finally {
+      clearTimeout(timer);
+      ctrl.abort();
+    }
+  }
+
+  async function download(url, signal, onProgress) {
+    const res = await fetch(url, { signal });
+    if (!res.ok || !res.body) throw new Error("download " + res.status);
+    const total = Number(res.headers.get("content-length")) || 0;
+    const reader = res.body.getReader();
+    const parts = [];
+    let got = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      parts.push(value);
+      got += value.length;
+      if (total) onProgress(got / total);
+    }
+    return URL.createObjectURL(new Blob(parts, { type: res.headers.get("content-type") || "" }));
+  }
+
+  // 换成内存副本；正在播放就等暂停后再换，不打断
+  function adopt(media, blobUrl, labelEl) {
+    const swap = () => {
+      const t = media.currentTime;
+      media.src = blobUrl;
+      media.addEventListener("loadedmetadata", () => { media.currentTime = t; }, { once: true });
+      labelEl.textContent = "已缓存，可流畅播放";
+    };
+    if (media.paused) swap();
+    else media.addEventListener("pause", swap, { once: true });
+  }
+
+  function stopJob(kind, labelEl) {
+    const job = state.jobs[kind];
+    if (!job) return;
+    job.abort();
+    state.jobs = { ...state.jobs, [kind]: null };
+    labelEl.textContent = "边下边播";
+  }
+
+  async function cacheOne(kind, media, labelEl) {
+    if (state.cached[kind]) return;
+    if (!film.paused || !audio.paused) { labelEl.textContent = "边下边播"; return; }
+    const ctrl = new AbortController();
+    state.jobs = { ...state.jobs, [kind]: ctrl };
+    try {
+      const blobUrl = await download(state.base + FILES[kind], ctrl.signal, (r) => {
+        labelEl.textContent = "正在缓存 " + Math.round(r * 100) + "%";
+      });
+      state.cached = { ...state.cached, [kind]: blobUrl };
+      if (kind !== "video" || !state.master) adopt(media, blobUrl, labelEl);
+    } catch (e) {
+      if (!ctrl.signal.aborted) labelEl.textContent = "边下边播";
+    } finally {
+      if (state.jobs[kind] === ctrl) state.jobs = { ...state.jobs, [kind]: null };
+    }
+  }
+
+  // 点了播放：停掉所有未完成的后台缓存，另一个播放器暂停
+  function onPlay(other) {
+    stopJob("video", filmLabel);
+    stopJob("audio", audioLabel);
+    if (!other.paused) other.pause();
+  }
+  film.addEventListener("play", () => onPlay(audio));
+  audio.addEventListener("play", () => onPlay(film));
+
+  toggle.addEventListener("click", () => {
+    const t = film.currentTime, playing = !film.paused;
+    const master = !state.master;
+    state.master = master;
+    if (master) stopJob("video", filmLabel);
+    film.src = master ? FILES.master : (state.cached.video || state.base + FILES.video);
+    qualityLabel.textContent = master ? "4K 原画 · 需要约 10 Mbps 网速" : "1080p";
+    toggle.textContent = master ? "切回 1080p" : "切换到 4K 原画";
+    film.addEventListener("loadedmetadata", () => { film.currentTime = t; if (playing) film.play().catch(() => {}); }, { once: true });
+  });
+
+  document.getElementById("movements").addEventListener("click", (e) => {
+    const row = e.target.closest(".mv");
+    if (!row) return;
+    film.currentTime = Number(row.dataset.t);
+    film.play().catch(() => {});
+    film.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  (async () => {
+    filmLabel.textContent = audioLabel.textContent = "正在选择最快线路…";
+    const base = await pickMirror();
+    state.base = base;
+    // 还没开始播放才换线路；已经在播就保持原来的地址
+    if (film.paused && !state.master) film.src = base + FILES.video;
+    if (audio.paused) audio.src = base + FILES.audio;
+    filmLabel.textContent = audioLabel.textContent = film.paused ? "准备缓存" : "边下边播";
+    await cacheOne("video", film, filmLabel);
+    await cacheOne("audio", audio, audioLabel);
+  })();
+</script>
+</body>
+</html>
